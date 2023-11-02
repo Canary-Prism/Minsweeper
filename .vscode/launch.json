@@ -1,0 +1,52 @@
+{
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:Minsweeper}",
+            "name": "Debug Minsweeper",
+            "program": "${workspaceFolder:Minsweeper}/.build/debug/Minsweeper",
+            "preLaunchTask": "swift: Build Debug Minsweeper"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:Minsweeper}",
+            "name": "Release Minsweeper",
+            "program": "${workspaceFolder:Minsweeper}/.build/release/Minsweeper",
+            "preLaunchTask": "swift: Build Release Minsweeper"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:Minsweeper}",
+            "name": "Debug MinsweeperTestClient",
+            "program": "${workspaceFolder:Minsweeper}/.build/debug/MinsweeperTestClient",
+            "preLaunchTask": "swift: Build Debug MinsweeperTestClient"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "sourceLanguages": [
+                "swift"
+            ],
+            "args": [],
+            "cwd": "${workspaceFolder:Minsweeper}",
+            "name": "Release MinsweeperTestClient",
+            "program": "${workspaceFolder:Minsweeper}/.build/release/MinsweeperTestClient",
+            "preLaunchTask": "swift: Build Release MinsweeperTestClient"
+        }
+    ]
+}

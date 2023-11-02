@@ -1,0 +1,24 @@
+#!/bin/zsh
+
+DOCKER="docker run -v "$PWD:/code" -w /code --platform linux/amd64 -e QEMU_CPU=max swift:latest"
+
+if [ "$1" = "-c" ]
+then
+    CMD="swift build -c release"
+elif [ "$1" = "-r" ]
+then
+    CMD="swift run"
+elif [ "$1" = "-l" ]
+then
+    CMD="$DOCKER swift build -c release"
+else
+    echo "Usage: $0 [-c|-r|-l]"
+    echo "  -c: compile"
+    echo "  -r: run"
+    echo "  -l: compile with docker"
+    exit 1
+fi
+
+OPTIONS=""
+
+eval "$CMD $OPTIONS"
