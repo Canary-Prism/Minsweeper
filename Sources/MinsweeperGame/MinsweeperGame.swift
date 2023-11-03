@@ -233,6 +233,14 @@ public class Minsweeper {
         guard x >= 0 && x < sizes.width && y >= 0 && y < sizes.height else { return gamestate.hideMines() }
         
         var board = gamestate.board
+        switch (board.get(x: x, y: y)) {
+            case .mine, .false_mine, .marked_mine:
+                gamestate.remaining_mines += 1
+            case .unknown:
+                gamestate.remaining_mines -= 1
+            default:
+                break
+        }
 
         let new_value: Cell = switch (board.get(x: x, y: y)) {
             case .mine:
