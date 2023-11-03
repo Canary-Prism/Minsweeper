@@ -234,9 +234,9 @@ public class Minsweeper {
         
         var board = gamestate.board
         switch (board.get(x: x, y: y)) {
-            case .mine, .false_mine, .marked_mine:
+            case .false_mine, .marked_mine:
                 gamestate.remaining_mines += 1
-            case .unknown:
+            case .unknown, .mine:
                 gamestate.remaining_mines -= 1
             default:
                 break
