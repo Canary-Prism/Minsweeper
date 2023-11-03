@@ -8,22 +8,23 @@ import MinsweeperGame
 
 
 
-let game = try! Minsweeper(width: 30, height: 30, mines: 1, onWin: {print("hooray")}, onLose: {print("womp womp")})
+let game = try! Minsweeper(width: 9, height: 9, mines: 10, onWin: {print("hooray")}, onLose: {print("womp womp")})
 
 let gamestate = game.start()
 
-func printBoard(board: [[Cell]]) {
+func printBoard(state: GameState) {
+    print("remaing mines: \(state.remaining_mines)")
     print("   ", terminator: "")
-    for i in 0..<board[0].endIndex {
+    for i in 0..<state.board[0].endIndex {
         print(i, terminator: "  ")
     }
     print()
-    for i in 0..<board.endIndex {
-        print(i, board[i], separator: " ")
+    for i in 0..<state.board.endIndex {
+        print(i, state.board[i], separator: " ")
     }
 }
 
-printBoard(board: gamestate.board)
+printBoard(state: gamestate)
 
 while let input = readLine() {
     let split = input.split(separator: " ")
@@ -42,5 +43,5 @@ while let input = readLine() {
             fatalError("What?")
     }
 
-    printBoard(board: gamestate.board)
+    printBoard(state: gamestate)
 }
