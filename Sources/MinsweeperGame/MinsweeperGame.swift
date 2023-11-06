@@ -114,7 +114,6 @@ public class Minsweeper {
         case .mine:
             // if it's the first move, move the mine to a random location
             if (first) {
-                board.set(x: x, y: y, newValue: .unknown(0))
                 //this is a bit inefficient, but it's not like it's going to be called often
                 while (true) {
                     let x2 = Int.random(in: 0..<sizes.width)
@@ -125,6 +124,7 @@ public class Minsweeper {
                         break
                     }
                 }
+                board.set(x: x, y: y, newValue: .unknown(0))
                 generateNumbers(&board)
                 first = false
                 return internalReveal(x: x, y: y, board: &board)
