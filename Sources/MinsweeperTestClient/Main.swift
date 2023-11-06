@@ -10,38 +10,40 @@ import MinsweeperGame
 
 let game = try! Minsweeper(width: 9, height: 9, mines: 10, onWin: {print("hooray")}, onLose: {print("womp womp")})
 
+print(game.offsetOfBoard())
+
 let gamestate = game.start()
 
-func printBoard(state: GameState) {
-    print("remaing mines: \(state.remaining_mines)")
-    print("   ", terminator: "")
-    for i in 0..<state.board[0].endIndex {
-        print(i, terminator: "  ")
-    }
-    print()
-    for i in 0..<state.board.endIndex {
-        print(i, state.board[i], separator: " ")
-    }
-}
+// func printBoard(state: GameState) {
+//     print("remaing mines: \(state.remaining_mines)")
+//     print("   ", terminator: "")
+//     for i in 0..<state.board[0].endIndex {
+//         print(i, terminator: "  ")
+//     }
+//     print()
+//     for i in 0..<state.board.endIndex {
+//         print(i, state.board[i], separator: " ")
+//     }
+// }
 
-printBoard(state: gamestate)
+// printBoard(state: gamestate)
 
-while let input = readLine() {
-    let split = input.split(separator: " ")
-    guard split.count == 3 else { continue }
-    guard let x = Int(split[0]), let y = Int(split[1]) else { continue }
-    guard x >= 0 && x < gamestate.board.endIndex && y >= 0 && y < gamestate.board[x].endIndex else { continue }
+// while let input = readLine() {
+//     let split = input.split(separator: " ")
+//     guard split.count == 3 else { continue }
+//     guard let x = Int(split[0]), let y = Int(split[1]) else { continue }
+//     guard x >= 0 && x < gamestate.board.endIndex && y >= 0 && y < gamestate.board[x].endIndex else { continue }
 
-    guard ["l", "r"].contains(split[2]) else { continue }
+//     guard ["l", "r"].contains(split[2]) else { continue }
 
-    let gamestate = switch split[2] {
-        case "l":
-            game.leftClick(x: x, y: y)
-        case "r":
-            game.rightClick(x: x, y: y)
-        default:
-            fatalError("What?")
-    }
+//     let gamestate = switch split[2] {
+//         case "l":
+//             game.leftClick(x: x, y: y)
+//         case "r":
+//             game.rightClick(x: x, y: y)
+//         default:
+//             fatalError("What?")
+//     }
 
-    printBoard(state: gamestate)
-}
+//     printBoard(state: gamestate)
+// }
