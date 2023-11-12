@@ -69,10 +69,10 @@ public class Minsweeper {
         for y in 0..<board.endIndex {
             for x in 0..<board[y].endIndex {
                 if case .mine = board.get(x: x, y: y) {
-                    for y2 in max(0, y-1)...min(board.endIndex-1, y+1) {
-                        for x2 in max(0, x-1)...min(board[y2].endIndex-1, x+1) {
+                    for y2 in max(0, y - 1)...min(board.endIndex - 1, y + 1) {
+                        for x2 in max(0, x - 1)...min(board[y2].endIndex - 1, x + 1) {
                             if case .unknown(let number) = board.get(x: x2, y: y2) {
-                                board.set(x: x2, y: y2, newValue: .unknown(number+1))
+                                board.set(x: x2, y: y2, newValue: .unknown(number + 1))
                             }
                         }
                     }
